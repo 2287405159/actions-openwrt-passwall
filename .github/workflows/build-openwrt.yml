@@ -18,15 +18,15 @@ on:
       - '.config'
 #  schedule:
 #    - cron: 0 8 * * 5
-  watch:
-    types: [started]
+#  watch:
+#    types: [started]
 
 env:
   REPO_URL: https://github.com/Lienol/openwrt
   REPO_BRANCH: dev-lean-lede
   CONFIG_FILE: .config
   DIY_SH: diy.sh
-  FREE_UP_DISK: false
+  FREE_UP_DISK: true
   SSH_ACTIONS: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
@@ -96,7 +96,7 @@ jobs:
       run: |
         cd openwrt
         echo -e "$(nproc) thread compile"
-        make -j$(nproc) || make -j1 V=s
+        make -j$(nproc) || make V=s
         echo "::set-output name=status::success"
 
     - name: Upload bin directory
