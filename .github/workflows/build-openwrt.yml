@@ -10,12 +10,12 @@ name: Build OpenWrt
 
 on:
   release:
-    types: [published]
+    types: published
   push:
     branches:
       - master
-#    paths:
-#      - '.config'
+    paths:
+      - '.config'
 #  schedule:
 #    - cron: 0 8 * * 5
   watch:
@@ -26,8 +26,8 @@ env:
   REPO_BRANCH: dev-19.07
   CONFIG_FILE: .config
   DIY_SH: diy.sh
-  FREE_UP_DISK: true
-  SSH_ACTIONS: true
+  FREE_UP_DISK: false
+  SSH_ACTIONS: false
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   TZ: Asia/Shanghai
